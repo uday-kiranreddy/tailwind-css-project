@@ -1,13 +1,60 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color:#f1f5f8;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+:root {
+    --border-width: 35px;
+  }
+   * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+  
+   .loading-container {
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+  
+  .loading-container .loading {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      border-style: solid;
+      border-width: var(--border-width);
+      border-color: transparent purple transparent purple;
+      position: relative;
+  }
+   .loading-container .loading::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: calc(100%);
+      width: calc(100%);
+      border-radius: 50%;
+      border-style: solid;
+      border-width: calc(66px);
+      box-sizing: border-box;
+      border-color: purple transparent purple transparent;
+      animation: animate 3s ease-in-out infinite backwards
+   }
+  
+   @keyframes animate {
+     0% {
+       transform: translate(-50%, -50%) rotate(-90deg);
+     }
+     50% {
+       transform: translate(-50%, -50%) rotate(90deg);
+     }
+     100% {
+       transform: translate(-50%, -50%) rotate(-90deg);
+     }
+   }
